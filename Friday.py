@@ -5,7 +5,6 @@
 
 
 
-
 import webbrowser
 import datetime
 import pyttsx3
@@ -74,13 +73,13 @@ def takeCommand():
     while(1):
         with sr.Microphone() as source:
             print("Listening....")                                                                                   
-            r.pause_threshold = 1
+            r.pause_threshold = 2
             r.energy_threshold = 150
             audio = r.listen(source)
 
         try:
             print("Recognising...")
-            query = r.recognize_google(audio, language='en-in')
+            query = r.recognize_google(audio, language='en-uk')
             print(f"User said: {query}")
             if(query!='what was my last command' and 'execute my last command'):
                 stack(query)
@@ -102,57 +101,21 @@ if __name__ == '__main__':
     wish()
     
     while(1):
-    #     # print("Press Enter and say 'Friday' to wake up the assisstant!")
-    #     # input()
-    # with sr.Microphone() as source:
-    #     print("Listening....")
-    #     r.pause_threshold = 2
-    #     r.energy_threshold = 100
-    #     audio = r.listen(source)
-    # try:
-    #     query = r.recognize_google(audio, language='en-in')
-    #     print(f"User said: {query}")
-        # if query == 'Friday':
-    # speak("Access granted!!")
-        takeCommand()
-        # except:
-        #     print("Say that again please....")
+        print("Press Enter and say 'Friday' to wake up the assisstant!")
+        input()
+        with sr.Microphone() as source:
+            print("Listening....")                                                                                   
+            r.pause_threshold = 1
+            r.energy_threshold = 150
+            audio = r.listen(source)
+        try:
+            query = r.recognize_google(audio, language='en-uk')
+            print(f"User said: {query}")
+            if query == 'Friday':
+                speak("Access granted!!")
+                takeCommand()
+        except:
+            print("Say that again please....")
     
     
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 
